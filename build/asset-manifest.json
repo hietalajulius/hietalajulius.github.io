@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/hietalajulius/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/hietalajulius/static/js/main.ce01f23a.chunk.js",
+    "main.js.map": "/hietalajulius/static/js/main.ce01f23a.chunk.js.map",
+    "runtime-main.js": "/hietalajulius/static/js/runtime-main.73cb2511.js",
+    "runtime-main.js.map": "/hietalajulius/static/js/runtime-main.73cb2511.js.map",
+    "static/js/2.5a85d63c.chunk.js": "/hietalajulius/static/js/2.5a85d63c.chunk.js",
+    "static/js/2.5a85d63c.chunk.js.map": "/hietalajulius/static/js/2.5a85d63c.chunk.js.map",
+    "static/js/3.bcb7be24.chunk.js": "/hietalajulius/static/js/3.bcb7be24.chunk.js",
+    "static/js/3.bcb7be24.chunk.js.map": "/hietalajulius/static/js/3.bcb7be24.chunk.js.map",
+    "index.html": "/hietalajulius/index.html",
+    "static/css/main.ab7136cd.chunk.css.map": "/hietalajulius/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.5a85d63c.chunk.js.LICENSE.txt": "/hietalajulius/static/js/2.5a85d63c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.73cb2511.js",
+    "static/js/2.5a85d63c.chunk.js",
+    "static/css/main.ab7136cd.chunk.css",
+    "static/js/main.ce01f23a.chunk.js"
+  ]
+}
