@@ -1,21 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+
+document.title = "Julius Hietala";
+//document.getElementById("favicon").href = "https://www.google.com/favicon.ico";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Julius Hietala</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/hietalajulius"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Github
         </a>
       </header>
     </div>
