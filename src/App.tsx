@@ -1,64 +1,159 @@
-import { RangeInput, Stack, Main, Heading } from "grommet";
+import {
+  Main,
+  Heading,
+  Grid,
+  Box,
+  Header,
+  Button,
+  Footer,
+  Text,
+  Avatar,
+  Image,
+  Anchor,
+} from "grommet";
 import React from "react";
+import Toggle from "react-toggle";
+import { Star } from "grommet-icons";
+import "./App.css";
+import { Project } from "./Card";
+import { projects } from "./projects";
+
+import { BiSun } from "react-icons/bi";
+
 
 document.title = "Julius Hietala";
-//document.getElementById("favicon").href = "https://www.google.com/favicon.ico";
-console.log("Favvi", (document.getElementById("favicon") as any).href);
 
-function App() {
-  const [value, setValue] = React.useState(100);
-  const [color, setColor] = React.useState("rgba(27, 33, 56, 1)");
-  const [icon, setIcon] = React.useState("moon");
+const App = () => {
+  const [darkMode, setDarkMode] = React.useState(true);
+  const [textColor, setTextColor] = React.useState("white");
 
-  const onChange = (event: any) => {
-    setValue(event);
-    if (event > 50) {
-      setColor("rgba(27, 33, 56, 1)");
+  React.useEffect(() => {
+    setTextColor(darkMode ? "white" : "black");
+  }, [darkMode]);
 
-      setIcon("moon");
-      const href = (document.getElementById("favicon") as any).href;
-      (document.getElementById("favicon") as any).href = href.replace(
-        "portfolio",
-        "moon"
+  const renderCards = () =>
+    projects.map((project) => {
+      console.log("Projj", project);
+      return (
+        <Box gridArea={project.gridArea}>
+          <Project textColor={textColor} {...project} />
+        </Box>
       );
-      console.log("ico", icon);
-    } else {
-      setColor("rgba(1, 1, 1, 0)");
+    });
 
-      setIcon("portfolio");
-      const href = (document.getElementById("favicon") as any).href;
+  const onToggle = () => {
+    setDarkMode(!darkMode);
+    const href = (document.getElementById("favicon") as any).href;
+    if (darkMode) {
       (document.getElementById("favicon") as any).href = href.replace(
         "moon",
-        "portfolio"
+        "sun"
       );
-      console.log("ico", icon);
+    } else {
+      (document.getElementById("favicon") as any).href = href.replace(
+        "sun",
+        "moon"
+      );
     }
   };
   return (
-    <Main
-      background={color}
-      fill="vertical"
-      align="center"
-      height={{ min: "1000px", max: "1500px" }}
-      pad="large"
-    >
-      <Stack anchor="top-right">
-        <RangeInput
-          value={value}
-          onChange={(event) => onChange(event.target.value)}
-        />
-      </Stack>
-      <Heading>Julius Hietala</Heading>
-      <a
-        className="App-link"
-        href="https://github.com/hietalajulius"
-        target="_blank"
-        rel="noopener noreferrer"
+    <>
+      <Main
+        background={
+          darkMode
+            ? "linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)"
+            : "white"
+        }
+        fill="vertical"
+        align="center"
+        height={{ min: "100%", max: "100%" }}
+        pad="small"
       >
-        Github
-      </a>
-    </Main>
+        <Grid
+          rows={["xxxsmall", "small", "small", "small", "small"]}
+          columns={["large"]}
+          gap="small"
+          areas={[
+            { name: "header", start: [0, 0], end: [0, 0] },
+            { name: "title", start: [0, 1], end: [0, 1] },
+            { name: "proj1", start: [0, 2], end: [0, 2] },
+            { name: "proj2", start: [0, 3], end: [0, 3] },
+            { name: "proj3", start: [0, 4], end: [0, 4] },
+          ]}
+        >
+          <Box gridArea="header">
+            <Header>
+              <Box animation={darkMode ? "pulse" : {}}>
+                <Toggle
+                  checked={darkMode}
+                  icons={{
+                    unchecked: <Star color={"yellow"} size={"small"} />,
+                    checked: <BiSun size="14px" />,
+                  }}
+                  onChange={onToggle}
+                />
+              </Box>
+              <Button
+                primary
+                label="Github"
+                href={"https://github.com/hietalajulius"}
+              />
+            </Header>
+          </Box>
+          <Box gridArea="title">
+            <Box>
+              <Heading color={textColor} level={1}>
+                <Box gap="small" direction="column">
+                  <Box align="center">
+                    <Avatar size="xlarge">
+                      <Image
+                        fit="contain"
+                        src="https://avatars3.githubusercontent.com/u/4254623?s=460&u=2929eada3a32281e89b5438075f3faefe53aaa13&v=4"
+                      />
+                    </Avatar>
+                  </Box>
+                  <Box align="center">{"Julius Hietala"}</Box>
+                </Box>
+              </Heading>
+            </Box>
+            <Heading color={textColor} alignSelf={"center"} level={2}>
+              {"Things i've been working on lately"}
+            </Heading>
+          </Box>
+          {renderCards()}
+        </Grid>
+      </Main>
+      <Footer
+        background="dark-2"
+        pad={{ horizontal: "small", vertical: "small" }}
+      >
+        <Box align="start" direction="row" gap="xsmall">
+          <Text size="small" alignSelf="center">
+            Made with:
+          </Text>
+          <Anchor size="small" href="https://www.typescriptlang.org/">
+            typescript
+          </Anchor>
+          <Text size="small" alignSelf="center">
+            &
+          </Text>
+          <Anchor size="small" href="https://v2.grommet.io/">
+            grommet
+          </Anchor>
+          <Text size="small" alignSelf="center">
+            &
+          </Text>
+          <Anchor size="small" href="https://kaffaroastery.fi/en">
+            coffee
+          </Anchor>
+        </Box>
+
+        <Text textAlign="center" size="small">
+          © 2020 Copyright
+        </Text>
+      </Footer>
+    </>
   );
-}
+};
 
 export default App;
