@@ -5,8 +5,6 @@ import App from "./App";
 import { Grommet } from "grommet";
 import { deepFreeze } from "grommet/utils";
 
-import { hpe } from "grommet-theme-hpe";
-
 export const customTheme = deepFreeze({
   global: {
     colors: {
