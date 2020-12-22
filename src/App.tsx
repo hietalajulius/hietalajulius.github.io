@@ -10,6 +10,7 @@ import {
   Avatar,
   Image,
   Anchor,
+  Grommet,
 } from "grommet";
 import React from "react";
 import Toggle from "react-toggle";
@@ -17,9 +18,8 @@ import { Star } from "grommet-icons";
 import "./App.css";
 import { Project } from "./Card";
 import { projects } from "./projects";
-
+import { customTheme } from "./theme";
 import { BiSun } from "react-icons/bi";
-
 
 document.title = "Julius Hietala";
 
@@ -33,7 +33,6 @@ const App = () => {
 
   const renderCards = () =>
     projects.map((project) => {
-      console.log("Projj", project);
       return (
         <Box gridArea={project.gridArea}>
           <Project textColor={textColor} {...project} />
@@ -57,28 +56,27 @@ const App = () => {
     }
   };
   return (
-    <>
+    <Grommet theme={customTheme}>
       <Main
         background={
           darkMode
             ? "linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)"
             : "white"
         }
-        fill="vertical"
         align="center"
-        height={{ min: "100%", max: "100%" }}
-        pad="small"
       >
         <Grid
-          rows={["xxxsmall", "small", "small", "small", "small"]}
+          rows={["xxxsmall", "small", "small", "small", "small", "small", "small"]}
           columns={["large"]}
-          gap="small"
+          gap="xxsmall"
           areas={[
             { name: "header", start: [0, 0], end: [0, 0] },
             { name: "title", start: [0, 1], end: [0, 1] },
             { name: "proj1", start: [0, 2], end: [0, 2] },
             { name: "proj2", start: [0, 3], end: [0, 3] },
             { name: "proj3", start: [0, 4], end: [0, 4] },
+            { name: "proj4", start: [0, 5], end: [0, 5] },
+            { name: "proj5", start: [0, 6], end: [0, 6] },
           ]}
         >
           <Box gridArea="header">
@@ -129,22 +127,16 @@ const App = () => {
       >
         <Box align="start" direction="row" gap="xsmall">
           <Text size="small" alignSelf="center">
-            Made with:
+            Made with
           </Text>
           <Anchor size="small" href="https://www.typescriptlang.org/">
-            typescript
+            TypeScript
           </Anchor>
           <Text size="small" alignSelf="center">
-            &
+            and
           </Text>
           <Anchor size="small" href="https://v2.grommet.io/">
             grommet
-          </Anchor>
-          <Text size="small" alignSelf="center">
-            &
-          </Text>
-          <Anchor size="small" href="https://kaffaroastery.fi/en">
-            coffee
           </Anchor>
         </Box>
 
@@ -152,7 +144,7 @@ const App = () => {
           © 2020 Copyright
         </Text>
       </Footer>
-    </>
+    </Grommet>
   );
 };
 
