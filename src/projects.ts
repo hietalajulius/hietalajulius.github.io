@@ -43,7 +43,7 @@ export const projects: ProjectType[] = [
     gridArea: "proj4",
     message:
       "This work was done as part of the Junction 2019 hackathon, where we created a tool to recommend recipes to users based on their existing ingredients, preferences, and store availability etc. The recommendation engine is based on a recurrent neural network (RNN) and it was implemented in PyTorch from scratch.",
-    title: "Food recipe redommender",
+    title: "Food recipe recommender",
     mediaType: "image",
     projectLink: "https://github.com/hietalajulius/k-ruoka-recipes",
     mediaLink:
