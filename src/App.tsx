@@ -66,7 +66,15 @@ const App = () => {
         align="center"
       >
         <Grid
-          rows={["xxxsmall", "small", "small", "small", "small", "small", "small"]}
+          rows={[
+            "xxxsmall",
+            "small",
+            "small",
+            "small",
+            "small",
+            "small",
+            "small",
+          ]}
           columns={["large"]}
           gap="xxsmall"
           areas={[
@@ -100,7 +108,7 @@ const App = () => {
           </Box>
           <Box gridArea="title">
             <Box>
-              <Heading color={textColor} level={1}>
+              <Heading size={"small"} color={textColor} level={1}>
                 <Box gap="small" direction="column">
                   <Box align="center">
                     <Avatar size="xlarge">
@@ -114,7 +122,29 @@ const App = () => {
                 </Box>
               </Heading>
             </Box>
-            <Heading color={textColor} alignSelf={"center"} level={2}>
+            <Box align="center">
+              <Text alignSelf="center" color={textColor}>
+                Hello! I'm currently working as a software engineer for{" "}
+                {<Anchor href="smartly.io ">Smartly.io</Anchor>} and doing robotics
+                research at the{" "}
+                {
+                  <Anchor href="https://irobotics.aalto.fi/research/">
+                    Intelligent Robotics Group
+                  </Anchor>
+                }{" "}
+                at{" "}
+                <Anchor href="https://www.aalto.fi/en">Aalto University</Anchor>
+                . My main interests are in practical applications of Machine
+                Learning, currently focusing on robotics and reinforcement
+                learning.
+              </Text>
+            </Box>
+            <Heading
+              size={"small"}
+              color={textColor}
+              alignSelf={"center"}
+              level={2}
+            >
               {"Things i've been working on lately"}
             </Heading>
           </Box>
