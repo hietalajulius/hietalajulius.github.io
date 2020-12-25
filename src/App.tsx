@@ -1,9 +1,7 @@
 import {
   Main,
   Heading,
-  Grid,
   Box,
-  Header,
   Button,
   Footer,
   Text,
@@ -23,19 +21,40 @@ import { BiSun } from "react-icons/bi";
 
 document.title = "Julius Hietala";
 
-const App = () => {
-  const [darkMode, setDarkMode] = React.useState(true);
-  const [textColor, setTextColor] = React.useState("white");
+const useWindowSize = () => {
+  const [windowSize, setWindowSize] = React.useState({
+    width: 0,
+    height: 0,
+  });
 
   React.useEffect(() => {
-    setTextColor(darkMode ? "white" : "black");
-  }, [darkMode]);
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+};
+
+const App = () => {
+  const [darkMode, setDarkMode] = React.useState(true);
+  const size = useWindowSize();
+
 
   const renderCards = () =>
     projects.map((project) => {
       return (
-        <Box gridArea={project.gridArea}>
-          <Project textColor={textColor} {...project} />
+        <Box>
+          <Project mobile={size.width < 620} textColor={textColor} {...project} />
         </Box>
       );
     });
@@ -55,116 +74,99 @@ const App = () => {
       );
     }
   };
+  const textColor = darkMode ? "white" : "black";
   return (
-    <Grommet theme={customTheme}>
-      <Main
-        background={
-          darkMode
-            ? "linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)"
-            : "white"
-        }
-        align="center"
-      >
-        <Grid
-          rows={[
-            "xxxsmall",
-            "small",
-            "small",
-            "small",
-            "small",
-            "small",
-            "small",
-          ]}
-          columns={["large"]}
-          gap="xxsmall"
-          areas={[
-            { name: "header", start: [0, 0], end: [0, 0] },
-            { name: "title", start: [0, 1], end: [0, 1] },
-            { name: "proj1", start: [0, 2], end: [0, 2] },
-            { name: "proj2", start: [0, 3], end: [0, 3] },
-            { name: "proj3", start: [0, 4], end: [0, 4] },
-            { name: "proj4", start: [0, 5], end: [0, 5] },
-            { name: "proj5", start: [0, 6], end: [0, 6] },
-          ]}
+    <Grommet
+      background={
+        darkMode
+          ? "linear-gradient(to top, #355c7d, #6c5b7b, #c06c84)"
+          : "white"
+      }
+      themeMode={darkMode ? "dark" : "light"}
+      theme={customTheme}
+    >
+      <Main pad="10px" align="center" direction="column">
+        <Box
+          pad={{ top: "20px" }}
+          direction="row"
+          width="large"
+          justify="between"
         >
-          <Box gridArea="header">
-            <Header>
-              <Box animation={darkMode ? "pulse" : {}}>
-                <Toggle
-                  checked={darkMode}
-                  icons={{
-                    unchecked: <Star color={"yellow"} size={"small"} />,
-                    checked: <BiSun size="14px" />,
-                  }}
-                  onChange={onToggle}
-                />
-              </Box>
-              <Button
-                primary
-                label="Github"
-                href={"https://github.com/hietalajulius"}
-              />
-            </Header>
+          <Box
+            animation={{
+              type: "pulse",
+              duration: 1000,
+              size: "medium",
+            }}
+          >
+            <Toggle
+              checked={darkMode}
+              icons={{
+                unchecked: <Star color={"yellow"} size={"small"} />,
+                checked: <BiSun size="14px" />,
+              }}
+              onChange={onToggle}
+            />
           </Box>
-          <Box gridArea="title">
-            <Box>
-              <Heading size={"small"} color={textColor} level={1}>
-                <Box gap="small" direction="column">
-                  <Box align="center">
-                    <Avatar size="xlarge">
-                      <Image
-                        fit="contain"
-                        src="https://avatars3.githubusercontent.com/u/4254623?s=460&u=2929eada3a32281e89b5438075f3faefe53aaa13&v=4"
-                      />
-                    </Avatar>
-                  </Box>
-                  <Box align="center">{"Julius Hietala"}</Box>
+          <Box gap="small" direction="row">
+            <Button
+              primary
+              label="Github"
+              href={"https://github.com/hietalajulius"}
+            />
+            <Button
+              primary
+              label="LinkedIn"
+              href={"https://www.linkedin.com/in/julius-hietala-8967b8a2/"}
+            />
+          </Box>
+        </Box>
+        <Box align="center">
+          <Box>
+            <Heading size={"small"} color={textColor} level={1}>
+              <Box gap="small" direction="column">
+                <Box align="center">
+                  <Avatar size="xlarge">
+                    <Image
+                      fit="contain"
+                      src="https://avatars3.githubusercontent.com/u/4254623?s=460&u=2929eada3a32281e89b5438075f3faefe53aaa13&v=4"
+                    />
+                  </Avatar>
                 </Box>
-              </Heading>
-            </Box>
-            <Box align="center">
-              <Text alignSelf="center" color={textColor}>
-                Hello! I'm currently working as a software engineer for{" "}
-                {<Anchor href="smartly.io ">Smartly.io</Anchor>} and doing robotics
-                research at the{" "}
-                {
-                  <Anchor href="https://irobotics.aalto.fi/research/">
-                    Intelligent Robotics Group
-                  </Anchor>
-                }{" "}
-                at{" "}
-                <Anchor href="https://www.aalto.fi/en">Aalto University</Anchor>
-                . My main interests are in practical applications of Machine
-                Learning, currently focusing on robotics and reinforcement
-                learning.
-              </Text>
-            </Box>
-            <Heading
-              size={"small"}
-              color={textColor}
-              alignSelf={"center"}
-              level={2}
-            >
-              {"Things i've been working on lately"}
+                <Box>{"Julius Hietala"}</Box>
+              </Box>
             </Heading>
           </Box>
-          {renderCards()}
-        </Grid>
+          <Box width="large">
+            <Text color={textColor}>
+              Hello! I'm currently working as a software engineer for{" "}
+              {<Anchor href="smartly.io ">Smartly.io</Anchor>} and doing
+              robotics research at the{" "}
+              {
+                <Anchor href="https://irobotics.aalto.fi/research/">
+                  Intelligent Robotics Group
+                </Anchor>
+              }{" "}
+              at{" "}
+              <Anchor href="https://www.aalto.fi/en">Aalto University</Anchor>.
+              My main interests are in practical applications of Machine
+              Learning, currently focusing on robotics and reinforcement
+              learning.
+            </Text>
+          </Box>
+          <Heading size={"small"} color={textColor} level={2}>
+            {"Things I've been working on lately"}
+          </Heading>
+        </Box>
+        {renderCards()}
       </Main>
-      <Footer
-        background="dark-2"
-        pad={{ horizontal: "small", vertical: "small" }}
-      >
+      <Footer pad={{ horizontal: "small", vertical: "small" }}>
         <Box align="start" direction="row" gap="xsmall">
-          <Text size="small" alignSelf="center">
-            Made with
-          </Text>
+          <Text size="small">Made with</Text>
           <Anchor size="small" href="https://www.typescriptlang.org/">
             TypeScript
           </Anchor>
-          <Text size="small" alignSelf="center">
-            and
-          </Text>
+          <Text size="small">and</Text>
           <Anchor size="small" href="https://v2.grommet.io/">
             grommet
           </Anchor>

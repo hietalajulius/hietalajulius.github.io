@@ -1,10 +1,7 @@
 import { Props } from "./Card";
 
-export type ProjectType = Props & { gridArea: string };
-
-export const projects: ProjectType[] = [
+export const projects: Props[] = [
   {
-    gridArea: "proj1",
     message:
       "The goal of this project is to teach a robot to manipulate different soft objects e.g. fold different cloths in simulation and in the real world. The learning algorithm is based on Reinforcement Learning and the perception system uses Computer Vision. The main technologies used include PyTorch, MuJoCo, and ROS.",
     title: "Robotic soft object manipulation",
@@ -16,9 +13,8 @@ export const projects: ProjectType[] = [
     imageFit: "cover",
   },
   {
-    gridArea: "proj2",
     message:
-      "In this work, we used a variant of the Word2vec algorithm to learn word embeddings that were then used in an downstream NLP sentiment analysis task to identify the sentiment exppressed in Twitter tweets. The project was done in python and we utlized libraries like gensim and PyTorch for learning the embeddings and the sentiment classifier.",
+      "In this work, we used a variant of the Word2vec algorithm to learn word embeddings that were then used in an downstream NLP sentiment analysis task to identify the sentiment expressed in Twitter tweets. The project was done in python and we utlized libraries like gensim and PyTorch for learning the embeddings and the sentiment classifier.",
     title: "Word2vec NLP",
     mediaType: "image",
     projectLink: "https://github.com/hietalajulius/word-2-vec-nlp",
@@ -28,7 +24,6 @@ export const projects: ProjectType[] = [
     imageFit: "cover",
   },
   {
-    gridArea: "proj3",
     message:
       "This project utilizes Reinforcement Learning (Policy gradient) to teach an agent to play the game of Pong against an opponent by only observing the pixels from the environment. The pixels were processes using Computer Vision. The main technologies utlized inlude PyTorch and OpenAI Gym.",
     title: "Pong from Pixels",
@@ -40,7 +35,6 @@ export const projects: ProjectType[] = [
     imageFit: "contain",
   },
   {
-    gridArea: "proj4",
     message:
       "This work was done as part of the Junction 2019 hackathon, where we created a tool to recommend recipes to users based on their existing ingredients, preferences, and store availability etc. The recommendation engine is based on a recurrent neural network (RNN) and it was implemented in PyTorch from scratch.",
     title: "Food recipe recommender",
@@ -52,7 +46,6 @@ export const projects: ProjectType[] = [
     imageFit: "contain",
   },
   {
-    gridArea: "proj5",
     message:
       "Done as a part of the Junction Stupid Hack 2019. We created a text classifier that goes through different Wikipedia articles and classifies them as good or bad based on the first couple of sentences. The classifiers is based on a custom recurrent neural network model implemented in PyTorch.",
     title: "NLP text classifier",
