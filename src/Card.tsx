@@ -30,7 +30,7 @@ export type DecoratedProps = Props & { textColor: string; mobile: boolean };
 export const Project = (props: DecoratedProps) => {
   return (
     <Card elevation="large" width="large">
-      <CardBody height="large">
+      <CardBody>
         <Box pad={{ top: "medium", horizontal: "medium" }} responsive={true}>
           <Grid
             rows={["xxsmall", "small"]}
