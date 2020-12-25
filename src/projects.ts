@@ -14,7 +14,7 @@ export const projects: Props[] = [
   },
   {
     message:
-      "In this work, we used a variant of the Word2vec algorithm to learn word embeddings that were then used in an downstream NLP sentiment analysis task to identify the sentiment expressed in Twitter tweets. The project was done in python and we utlized libraries like gensim and PyTorch for learning the embeddings and the sentiment classifier.",
+      "We used a variant of the Word2vec algorithm to learn word embeddings that were then used in an downstream NLP sentiment analysis task to identify the sentiment in Tweets. The project was done in python and we utlized libraries like gensim and PyTorch for learning the embeddings and the sentiment classifier.",
     title: "Word2vec NLP",
     mediaType: "image",
     projectLink: "https://github.com/hietalajulius/word-2-vec-nlp",
