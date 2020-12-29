@@ -10,7 +10,18 @@ export const projects: Props[] = [
     mediaLink:
       "https://github.com/hietalajulius/cloth-manipulation/blob/master/cover.png?raw=true",
     time: "2020 - Present",
-    imageFit: "cover",
+    imageFit: "contain",
+  },
+  {
+    message:
+      "We created an audio controlled maze using the encoder from the popular Transformer model for parsing the audio commands from raw audio. The model was implemeted using PyTorch's modular version of the model. ",
+    title: "Audio Recognition Transformer",
+    mediaType: "image",
+    projectLink: "https://github.com/hietalajulius/junction-2020",
+    mediaLink:
+      "https://github.com/hietalajulius/junction-2020/raw/main/cover.png",
+    time: "2020",
+    imageFit: "contain",
   },
   {
     message:
@@ -21,7 +32,7 @@ export const projects: Props[] = [
     mediaLink:
       "https://github.com/hietalajulius/word-2-vec-nlp/raw/master/cover.png?raw=true",
     time: "2020",
-    imageFit: "cover",
+    imageFit: "contain",
   },
   {
     message:
